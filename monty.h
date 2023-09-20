@@ -57,8 +57,8 @@ typedef struct instruction_s {
 } instruction_t;
 
 /*""" Global Variables"""*/
-
-// extern char *Command;
+/* Commandline Argument Tpokinaized Array*/
+extern char **CATA;
 
 /*""" Functions Prototype """"*/
 
@@ -73,6 +73,14 @@ size_t Get_Inout(char *filePath);
 /*String*/
 char  **Tokenize_in_Arr(char *string, char*  delim);
 size_t Print_2D_Arr(char** array, size_t isNull);
+/*opcode_handler.c*/
+void push(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+int instructionF(char *str_arg, int int_arg);
+
 
 
 #endif

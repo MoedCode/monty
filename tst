@@ -1,4 +1,6 @@
-co1
-co2 
-co3
-
+push
+add
+pall
+swap
+pop
+الله الم
