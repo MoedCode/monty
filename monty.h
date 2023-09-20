@@ -60,7 +60,7 @@ typedef struct instruction_s {
 
 /*""" Global Variables"""*/
 
-extern char *Command;
+// extern char *Command;
 
 /*""" Functions Prototype """"*/
 
@@ -68,10 +68,12 @@ extern char *Command;
 size_t Free_2D_Array(char **Array);
 
 /* Get_Input.c*/
-size_t Get_Usr_Input();
+size_t Get_Inout();
+
 
 /*String*/
-char **tokenize(char *string, char *delim);
-size_t Print_2D_Array(char **array, size_t is_NT);
+char  **Tokenize_in_Arr(char *string, char*  delim);
+size_t Print_2D_Arr(char** array, size_t isNull);
+
 
 #endif
