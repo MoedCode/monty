@@ -1,10 +1,14 @@
 #include "monty.h"
+#include <stdlib.h>
 
 int main(int argc, char **argv)
 {
-	argv[1] = 0;
+	if (argc < 2)
+			exit(EXIT_FAILURE);
 
-  Get_Inout();
+
+
+  Get_Inout(argv[1]);
 
 
 	return (0);

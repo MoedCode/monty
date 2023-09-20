@@ -12,22 +12,20 @@
 /* #MACROS */
 
 #define DEBUG(M) printf("%s%s:%d\n", M, __FILE__, __LINE__);
-#define FreeVar(var)                                                           \
-  do {                                                                         \
-    if (var) {                                                                 \
-      free(var);                                                               \
-      var = NULL;                                                              \
-    }                                                                          \
-  } while (0)
+#define DBG printf("%s:%d\n", __FILE__, __LINE__)
+#define FreeVar(var) do { \
+    if (var) { \
+        free(var); \
+       var = NULL; \
+    } \
+} while(0)
 
-#define FREE_2D_ARR(arr)                                                           \
-  {                                                                            \
-    if (arr) {                                                                 \
-      Free_2D_Array(arr);                                                      \
-      arr = NULL;                                                              \
-    }                                                                          \
-  }                                                                            \
-  while (0)
+#define FREE_2D_ARR(arr) { \
+    if (arr) { \
+       Free_2D_Array(arr); \
+        arr = NULL; \
+    } \
+} while(0)
 
 /* Data structures */
 
@@ -68,7 +66,8 @@ typedef struct instruction_s {
 size_t Free_2D_Array(char **Array);
 
 /* Get_Input.c*/
-size_t Get_Inout();
+size_t Get_Inout(char *filePath);
+
 
 
 /*String*/
