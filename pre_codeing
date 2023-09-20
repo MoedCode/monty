@@ -1,0 +1,96 @@
+This prompt seems to be referring to a project assignment requiring the creation of an interpreter for Monty ByteCodes files. The Monty language is a scripting language that is first compiled into Monty byte codes, similar to Python. The goal is to create an interpreter for these Monty ByteCodes files.
+
+Here are the main details based on the provided information:
+
+### Environment and Compilation
+
+1. Allowed editors: `vi`, `vim`, `emacs`.
+2. All files will be compiled on Ubuntu 20.04 LTS using `gcc`, with the options `-Wall -Werror -Wextra -pedantic -std=c89`.
+3. All files should end with a new line.
+4. A `README.md` file is mandatory at the root of the project folder.
+5. Code should follow the Betty style and will be checked using `betty-style.pl` and `betty-doc.pl`.
+6. Only one global variable is allowed.
+7. No more than 5 functions per file are permitted.
+8. The C standard library can be used.
+9. Prototypes of all functions should be included in the header file `monty.h`.
+10. All header files should be include guarded.
+11. The project should be done in order.
+
+### Data Structures
+
+The project requires the use of specific data structures, including:
+
+- `stack_s`: a doubly linked list representation of a stack (or queue).
+- `instruction_s`: a structure representing an opcode and its function.
+
+```c
+typedef struct stack_s
+{
+        int n;
+        struct stack_s *prev;
+        struct stack_s *next;
+} stack_t;
+
+typedef struct instruction_s
+{
+        char *opcode;
+        void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
+```
+
+### Compilation & Output
+
+- Code will be compiled with this command: `gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty`.
+- Output must be printed on stdout.
+- Error messages must be printed on stderr.
+
+### The Monty Program
+
+The Monty program should be used as follows: `monty file`, where `file` is the path to the file containing Monty byte code.
+
+Here are some rules and error handling:
+
+- If the user does not provide a file or provides more than one argument, print the error message `USAGE: monty file`, followed by a new line, and exit with `EXIT_FAILURE`.
+- If it's impossible to open the file, print `Error: Can't open file <file>`, followed by a new line, and exit with `EXIT_FAILURE`.
+- If the file contains an invalid instruction, print `L<line_number>: unknown instruction <opcode>`, followed by a new line, and exit with `EXIT_FAILURE`.
+- The program runs the bytecodes line by line and stops if it executed all lines properly, finds an error in the file, or encounters an error.
+- If malloc fails, print `Error: malloc failed`, followed by a new line, and exit with `EXIT_FAILURE`. You are only allowed to use `malloc` and `free`.
+
+### Monty byte code files
+
+- Files containing Monty byte codes usually have the `.m` extension.
+- There is not more than one instruction per line.
+- The files can contain blank lines (empty or made of spaces only), and any additional text after the opcode or its required argument is not taken into account.
+
+Overall, this project is about implementing a Monty ByteCodes interpreter. Be sure to follow all instructions, use the provided data structures, handle all specified error cases, and ensure that your code adheres to the provided style guidelines.
+
+### Reading Monty Byte Code
+
+The first part of the interpreter's job is to read the Monty byte code file. This is done line by line, with each line being parsed to determine the required action. Each line of the file is expected to contain an opcode and, in some cases, an argument for that opcode.
+
+The opcode is a command that tells the interpreter what operation to perform. Some opcodes require an argument, which is a value that the operation will act on. For example, the `push` opcode requires an integer argument, which is the value to be pushed onto the stack.
+
+### Executing Instructions
+
+Every instruction or opcode in the Monty language corresponds to a function in the interpreter. The `instruction_t` struct has two members: a string `opcode` and a function pointer `f`. The `opcode` is matched with the opcode read from the file, and the function pointer `f` points to the corresponding function to execute.
+
+When the opcode from a line in the file is read, the interpreter loops through an array of `instruction_t` structs. When it finds a struct where the `opcode` member matches the read opcode, it calls the corresponding function pointed to by `f`.
+
+### Manipulating the Stack
+
+The `stack_t` struct is used to implement a doubly-linked list representing a stack. A stack is a LIFO (Last In, First Out) data structure, which means that the last item added (pushed) to the stack is the first one to be removed (popped).
+
+Different opcodes in the Monty language manipulate the stack in different ways. For example:
+
+- The `push` opcode pushes an integer onto the stack.
+- The `pall` opcode prints all the values on the stack, starting from the top.
+- The `pint` opcode prints the value at the top of the stack.
+- The `pop` opcode removes the top element of the stack.
+
+### Error Handling
+
+If any errors occur during the execution of the program, such as an invalid opcode in the file or a failed memory allocation, the program will print an error message to `stderr` and exit with `EXIT_FAILURE`. This allows the user to see what went wrong and take appropriate action.
+
+### Conclusion
+
+In essence, the Monty byte code interpreter reads a file containing Monty byte codes, interprets each line as a command to manipulate a stack data structure, and executes these commands. It also provides useful error messages if anything goes wrong. The key to building such an interpreter is a good understanding of the Monty language, stack data structures, and the C programming language.
