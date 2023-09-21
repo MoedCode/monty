@@ -191,9 +191,9 @@ int delete_stack_t_at_index(stack_t **head, unsigned int index)
  * @h: pointer to first node
  * Return: size_t i whics number of printd  nodes
  */
-size_t Print_stack(const stack_t *h)
+unsigned int  Print_stack(const stack_t *h)
 {
-	size_t i;
+	unsigned int  i;
 	const stack_t *H = h;
 
 	for (i = 0; H; i++)

@@ -17,30 +17,36 @@ struct instruction_s opcode_arr[] =
 };
 int instructionF(char *arg0, char *arg1, unsigned int line )
 {
-	int i;
-	stack_t **x;
+	static int i;
 
+	stack_t **x = malloc(sizeof(stack_t));
+/*
 	if (arg1 == NULL || !is_valid_integer(arg1))
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", line);
 		}
 	else
 	 	n = atoi(arg1);
-
+*/
 	if (arg0 && arg1)
 	{
+		n = atoi(arg1);
 		for (i = 0; i <= 5 ; i++ )
 		{
 
 			if (!strcmp(opcode_arr[i].opcode, arg0) )
 			{
-				DBG;
+
 			 	 opcode_arr[i].f(x, line);
-				 DBG;
+
 			}
 		}
 	}
+	if (i > 5)
+	{
 	Print_stack(*x);
+	}
+
 
 	return (0);
 }
@@ -50,35 +56,36 @@ int instructionF(char *arg0, char *arg1, unsigned int line )
 void push(stack_t **stack,unsigned int line_number)
 {
 	unsigned int size = 0;
-	printf("n = [%d]\n", n);
-	DBG;
+
+
 	if (!*stack)
 	{
+
 		*stack = Add_Head(stack,  n);
-		printf(">> %d",(*stack)->n);
+
 	}
 	else
 		{
-			DBG;
+
 			size = stack_len(*stack);
-			DBG;
+
 			*stack = insert_stack_at_index(stack, size, n);
 		}
 
-	DBG;
+
 
 
 }
 void pint(stack_t **stack, unsigned int line_number)
 {
 
-	printf("n = [%d]\n", n);
+	// printf("n = [%d]\n", n);
 
 }
 void add(stack_t **stack, unsigned int line_number)
 {
 
-	printf("n = [%d]\n", n);
+	// printf("n = [%d]\n", n);
 }
 void pall(stack_t **stack, unsigned int line_number)
 {
@@ -86,12 +93,12 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 void swap(stack_t **stack, unsigned int line_number)
 {
-	printf("n = [%d]\n", n);
+	// printf("n = [%d]\n", n);
 
 }
 void pop(stack_t **stack, unsigned int line_number)
 {
-	printf("n = [%d]\n", n);
+	// printf("n = [%d]\n", n);
 }
 bool is_valid_integer(const char *str)
 {

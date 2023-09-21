@@ -36,12 +36,13 @@ size_t Free_2D_Array(char **Array)
  */
 void free_stack(stack_t *head)
 {
-	stack_t *tmp;
+	stack_t *tmp = head;
 
-	while (head != NULL)
+	while (tmp)
 	{
-		tmp = head;
-		head = head->next;
+		stack_t *next = tmp->next;
+
 		free(tmp);
+		tmp = next;
 	}
 }

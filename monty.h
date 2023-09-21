@@ -97,7 +97,7 @@ stack_t *creat_One ( int n);
 stack_t *Creat_stack_t( int n, stack_t **LIST, int index);
 stack_t *creat_One( int n);
 int delete_stack_t_at_index(stack_t **head, unsigned int index);
-size_t Print_stack(const stack_t *h);
+unsigned int Print_stack(const stack_t *h);
 size_t stack_len(const stack_t *h);
 stack_t *insert_stack_at_index(stack_t **h, unsigned int idx, int n);
 stack_t *add_stack_end(stack_t **head, const int n);
