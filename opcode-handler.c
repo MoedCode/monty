@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-struct instruction_s opcode_arr[] =
+struct instruction_ss opcode_arr[] =
 {
 {"push", push},
 {"add", add},
@@ -12,48 +12,47 @@ struct instruction_s opcode_arr[] =
 {"pop", pop},
 {NULL, NULL}
 };
-int instructionF(char *str_arg, int int_arg)
+int instructionF(char *arg0, char *arg1, unsigned int line )
 {
 	int i;
-
-	stack_t *node = malloc(sizeof(stack_t));
-	if (!node)
-	{
-    	fprintf(stderr, "Error: Failed to allocate memory\n");
-    	exit(EXIT_FAILURE);
-	}
-	node->n = int_arg * 2;
-	node->next = NULL;
-	node->prev = NULL;
 	for (i = 0; opcode_arr[i].opcode ; i++ )
-			if (!strcmp(opcode_arr[i].opcode, str_arg) && int_arg)
-				opcode_arr[i].f(&node, int_arg);
+	{
+		printf("arg[0]=> %s arg[1]=> %s\n",arg0, arg1);
+		/* if (!strcmp(opcode_arr[i].opcode, arg0) && line)
+				 opcode_arr[i].f(line);*/
+	}
+
 	return (0);
-
 }
 
 
 
-void push(stack_t *(*stack), unsigned int line_number)
-{
-		printf("%u\n", line_number);
-}
-void add(stack_t *(*stack), unsigned int line_number)
+void push( unsigned int line_number)
 {
 		printf("%u\n", line_number);
 
+
 }
-void pall(stack_t *(*stack), unsigned int line_number)
+void add( unsigned int line_number)
 {
 		printf("%u\n", line_number);
 
+
 }
-void swap(stack_t *(*stack), unsigned int line_number)
+void pall( unsigned int line_number)
 {
 		printf("%u\n", line_number);
 
+
 }
-void pop(stack_t *(*stack), unsigned int line_number)
+void swap( unsigned int line_number)
 {
 		printf("%u\n", line_number);
+
+
+}
+void pop( unsigned int line_number)
+{
+		printf("%u\n", line_number);
+
 }

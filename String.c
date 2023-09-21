@@ -18,7 +18,7 @@ char  **Tokenize_in_Arr(char *string, char*  delim)
 			return (NULL);
 		}
 	/* tokinize && Asign */
-		Tokens[TksNum] = strdup(token);
+		Tokens[TksNum] = Strdup(token);
 		token = strtok(NULL, delim);
 		TksNum++;
 
@@ -56,4 +56,21 @@ size_t Print_2D_Arr(char** array, size_t isNull)
 		printf("[%u] - %s  \n", (unsigned int)i,array[i]);
 
 	return (i);
+}
+
+char *Strdup(const char *str)
+{
+	if (str == NULL) {
+		  return NULL;
+	}
+
+	size_t len = strlen(str);
+	char *new_str = (char *)malloc(len + 1);
+
+	if (new_str == NULL)
+		return NULL;
+
+
+	strcpy(new_str, str);
+	return new_str;
 }

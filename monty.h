@@ -14,17 +14,19 @@
 #define DEBUG(M) printf("%s%s:%d\n", M, __FILE__, __LINE__);
 #define DBG printf("%s:%d\n", __FILE__, __LINE__)
 #define FreeVar(var) do { \
-    if (var) { \
-        free(var); \
-       var = NULL; \
-    } \
+	 if (var)\
+	{ \
+		free(var); \
+		var = NULL; \
+	} \
 } while(0)
 
 #define FREE_2D_ARR(arr) { \
-    if (arr) { \
-       Free_2D_Array(arr); \
-        arr = NULL; \
-    } \
+if (arr)\
+{ \
+		Free_2D_Array(arr); \
+		arr = NULL; \
+} \
 } while(0)
 
 /* Data structures */
@@ -53,8 +55,12 @@ typedef struct stack_s {
  */
 typedef struct instruction_s {
   char *opcode;
-  void (*f)(stack_t **stack, unsigned int line_number);
+  void (*f)( unsigned int line_number);
 } instruction_t;
+typedef struct instruction_ss {
+  char *opcode;
+  void (*f)( unsigned int line_number);
+} instruction_tt;
 
 /*""" Global Variables"""*/
 /* Commandline Argument Tpokinaized Array*/
@@ -74,15 +80,17 @@ size_t Get_Inout(char *filePath);
 char  **Tokenize_in_Arr(char *string, char*  delim);
 size_t Print_2D_Arr(char** array, size_t isNull);
 /*opcode_handler.c*/
-void push(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-int instructionF(char *str_arg, int int_arg);
+void push( unsigned int line_number);
+void add( unsigned int line_number);
+void pall( unsigned int line_number);
+void swap( unsigned int line_number);
+void pop( unsigned int line_number);
+int instructionF(char *arg0, char *arg1, unsigned int line );
 /* Data-Structure.c */
 stack_t *creat_One ( int n);
 stack_t *Creat_stack_t( int n, stack_t **LIST, int index);
 
+ ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+ char *Strdup(const char *str);
 
 #endif

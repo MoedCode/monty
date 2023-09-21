@@ -11,7 +11,7 @@ stack_t *creat_One ( int n)
 stack_t *Creat_stack_t( int n, stack_t **LIST, int index);
 stack_t *Creat_stack_t( int n, stack_t **LIST, int index)
 {
-	size_t i;
+	int i;
 	stack_t *tmp, *List_;
 
 	if (n || !LIST)
