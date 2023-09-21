@@ -60,17 +60,20 @@ size_t Print_2D_Arr(char** array, size_t isNull)
 
 char *Strdup(const char *str)
 {
+	int len;
+	char *new_str;
+
 	if (str == NULL) {
-		  return NULL;
+		return NULL;
 	}
 
-	size_t len = strlen(str);
-	char *new_str = (char *)malloc(len + 1);
+	len = strlen(str);
+	new_str = (char *)malloc(len + 1);
 
 	if (new_str == NULL)
 		return NULL;
 
-
 	strcpy(new_str, str);
 	return new_str;
 }
+
