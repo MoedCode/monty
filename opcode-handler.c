@@ -3,56 +3,94 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-struct instruction_ss opcode_arr[] =
+
+int n;
+struct instruction_s opcode_arr[] =
 {
 {"push", push},
 {"add", add},
 {"pall", pall},
 {"swap", swap},
 {"pop", pop},
+{"pint", pint},
 {NULL, NULL}
 };
 int instructionF(char *arg0, char *arg1, unsigned int line )
 {
 	int i;
-	for (i = 0; opcode_arr[i].opcode ; i++ )
+	stack_t **x;
+
+	if (arg1 == NULL || !is_valid_integer(arg1))
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line);
+		}
+	else
+	 	n = atoi(arg1);
+
+	if (arg0 && arg1)
 	{
-		printf("arg[0]=> %s arg[1]=> %s\n",arg0, arg1);
-		/* if (!strcmp(opcode_arr[i].opcode, arg0) && line)
-				 opcode_arr[i].f(line);*/
+		for (i = 0; i <= 5 ; i++ )
+		{
+
+			if (!strcmp(opcode_arr[i].opcode, arg0) )
+			 	 opcode_arr[i].f(x, line);
+		}
 	}
+	Print_stack(*x);
 
 	return (0);
 }
 
 
 
-void push( unsigned int line_number)
+void push(stack_t **stack,unsigned int line_number)
 {
-		printf("%u\n", line_number);
+	int size = 0;
+	printf("n = [%d]\n", n);
+	if(*stack)
+		{
+			size = stack_len(*stack);
+			*stack = Creat_stack_t(n, stack, size);
+		}
+	else
+		*stack = creat_One(n);
 
 
 }
-void add( unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_number)
 {
-		printf("%u\n", line_number);
 
+	printf("n = [%d]\n", n);
 
 }
-void pall( unsigned int line_number)
+void add(stack_t **stack, unsigned int line_number)
 {
-		printf("%u\n", line_number);
 
+	printf("n = [%d]\n", n);
+}
+void pall(stack_t **stack, unsigned int line_number)
+{
 
 }
-void swap( unsigned int line_number)
+void swap(stack_t **stack, unsigned int line_number)
 {
-		printf("%u\n", line_number);
-
+	printf("n = [%d]\n", n);
 
 }
-void pop( unsigned int line_number)
+void pop(stack_t **stack, unsigned int line_number)
 {
-		printf("%u\n", line_number);
+	printf("n = [%d]\n", n);
+}
+bool is_valid_integer(const char *str)
+{
+	if (str == NULL || str[0] == '\0')
+		return false;
 
+	for (int i = 0; str[i] != '\0'; i++)
+	{
+		if (!isdigit(str[i]) && (i == 0 && str[i] != '-' && str[i] != '+'))
+			return false;
+	}
+
+	return true;
 }

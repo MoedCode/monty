@@ -77,3 +77,9 @@ char *Strdup(const char *str)
 	return new_str;
 }
 
+void rm_newLine(char *string)
+{
+	for (; *string != '\n'; string++)
+		;
+	*string = '\0';
+}

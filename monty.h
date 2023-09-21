@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdbool.h>
+#include <ctype.h>
 
 /* #MACROS */
 
@@ -30,7 +32,6 @@ if (arr)\
 } while(0)
 
 /* Data structures */
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -40,10 +41,11 @@ if (arr)\
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO
  */
-typedef struct stack_s {
-  int n;
-  struct stack_s *prev;
-  struct stack_s *next;
+typedef struct stack_s
+{
+		int n;
+		struct stack_s *prev;
+		struct stack_s *next;
 } stack_t;
 /**
  * struct instruction_s - opcode and its function
@@ -53,23 +55,22 @@ typedef struct stack_s {
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
  */
-typedef struct instruction_s {
-  char *opcode;
-  void (*f)( unsigned int line_number);
+typedef struct instruction_s
+{
+		char *opcode;
+		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-typedef struct instruction_ss {
-  char *opcode;
-  void (*f)( unsigned int line_number);
-} instruction_tt;
-
 /*""" Global Variables"""*/
 /* Commandline Argument Tpokinaized Array*/
-extern char **CATA;
+extern int  n;
+
 
 /*""" Functions Prototype """"*/
 
 /* memory.c*/
 size_t Free_2D_Array(char **Array);
+void free_stack(stack_t *head);
+
 
 /* Get_Input.c*/
 size_t Get_Inout(char *filePath);
@@ -79,16 +80,27 @@ size_t Get_Inout(char *filePath);
 /*String*/
 char  **Tokenize_in_Arr(char *string, char*  delim);
 size_t Print_2D_Arr(char** array, size_t isNull);
+void rm_newLine(char *string);
+
 /*opcode_handler.c*/
-void push( unsigned int line_number);
-void add( unsigned int line_number);
-void pall( unsigned int line_number);
-void swap( unsigned int line_number);
-void pop( unsigned int line_number);
+void push( stack_t **stack, unsigned int line_number);
+void add( stack_t **stack, unsigned int line_number);
+void pall( stack_t **stack, unsigned int line_number);
+void swap( stack_t **stack, unsigned int line_number);
+void pop( stack_t **stack, unsigned int line_number);
+void pint( stack_t **stack, unsigned int line_number);
 int instructionF(char *arg0, char *arg1, unsigned int line );
+bool is_valid_integer(const char *str);
+
 /* Data-Structure.c */
 stack_t *creat_One ( int n);
 stack_t *Creat_stack_t( int n, stack_t **LIST, int index);
+stack_t *creat_One( int n);
+int delete_stack_t_at_index(stack_t **head, unsigned int index);
+size_t Print_stack(const stack_t *h);
+size_t stack_len(const stack_t *h);
+
+
 
  ssize_t getline(char **lineptr, size_t *n, FILE *stream);
  char *Strdup(const char *str);

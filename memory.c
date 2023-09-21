@@ -29,3 +29,19 @@ size_t Free_2D_Array(char **Array)
 	}
 	return (i);
 }
+/**
+ * free_stack -  frees a stack_t list.
+ * @head:  pointer of the head node.
+ * Return: VOID
+ */
+void free_stack(stack_t *head)
+{
+	stack_t *tmp;
+
+	while (head != NULL)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+}
