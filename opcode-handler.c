@@ -14,6 +14,8 @@ struct instruction_s opcode_arr[] =
 };
 int instructionF(char *str_arg, int int_arg)
 {
+	int i;
+
 	stack_t *node = malloc(sizeof(stack_t));
 	if (!node)
 	{
@@ -23,7 +25,7 @@ int instructionF(char *str_arg, int int_arg)
 	node->n = int_arg * 2;
 	node->next = NULL;
 	node->prev = NULL;
-	for (int i = 0; opcode_arr[i].opcode ; i++ )
+	for (i = 0; opcode_arr[i].opcode ; i++ )
 			if (!strcmp(opcode_arr[i].opcode, str_arg) && int_arg)
 				opcode_arr[i].f(&node, int_arg);
 	return (0);

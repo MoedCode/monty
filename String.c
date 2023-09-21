@@ -19,7 +19,6 @@ char  **Tokenize_in_Arr(char *string, char*  delim)
 		}
 	/* tokinize && Asign */
 		Tokens[TksNum] = strdup(token);
-		// printf("tenize.c:25 %s\n",Tokens[TksNum]);
 		token = strtok(NULL, delim);
 		TksNum++;
 
@@ -54,7 +53,7 @@ size_t Print_2D_Arr(char** array, size_t isNull)
 				return (0);
 
 	for (i = 0; i < j; i++)
-		printf("[%zu] - %s  \n", i,array[i]);
+		printf("[%u] - %s  \n", (unsigned int)i,array[i]);
 
 	return (i);
 }

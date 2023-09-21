@@ -80,7 +80,9 @@ void pall(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 int instructionF(char *str_arg, int int_arg);
-
+/* Data-Structure.c */
+stack_t *creat_One ( int n);
+stack_t *Creat_stack_t( int n, stack_t **LIST, int index);
 
 
 #endif
