@@ -25,7 +25,7 @@ int instructionF(char *str_arg, int int_arg)
 	node->prev = NULL;
 	for (int i = 0; opcode_arr[i].opcode ; i++ )
 			if (!strcmp(opcode_arr[i].opcode, str_arg))
-				opcode_arr->f(&node, int_arg);
+				opcode_arr[i].f(&node, int_arg);
 	return (0);
 
 }
@@ -34,28 +34,28 @@ int instructionF(char *str_arg, int int_arg)
 
 void push(stack_t *(*stack), unsigned int line_number)
 {
-	printf("push  %u, node%i",line_number,((*stack))->n);
+	printf("push  %u, node%i\n",line_number,((*stack))->n);
 		free((*stack));
 }
 void add(stack_t *(*stack), unsigned int line_number)
 {
-		printf("add %u, node%i",line_number,((*stack))->n);
+		printf("add %u, node%i\n",line_number,((*stack))->n);
 		free((*stack));
 
 }
 void pall(stack_t *(*stack), unsigned int line_number)
 {
-		printf("pall %u, node%i",line_number,((*stack))->n);
+		printf("pall %u, node%i\n",line_number,((*stack))->n);
 		free((*stack));
 
 }
 void swap(stack_t *(*stack), unsigned int line_number)
 {
-		printf("swap  %u, node%i",line_number,((*stack))->n);
+		printf("swap  %u, node%i\n",line_number,((*stack))->n);
 		free((*stack));
 }
 void pop(stack_t *(*stack), unsigned int line_number)
 {
-		printf(" pop  %u, node%i",line_number,((*stack))->n);
+		printf(" pop  %u, node%i\n",line_number,((*stack))->n);
 		free((*stack));
 }
