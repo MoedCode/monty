@@ -33,7 +33,11 @@ int instructionF(char *arg0, char *arg1, unsigned int line )
 		{
 
 			if (!strcmp(opcode_arr[i].opcode, arg0) )
+			{
+				DBG;
 			 	 opcode_arr[i].f(x, line);
+				 DBG;
+			}
 		}
 	}
 	Print_stack(*x);
@@ -45,15 +49,23 @@ int instructionF(char *arg0, char *arg1, unsigned int line )
 
 void push(stack_t **stack,unsigned int line_number)
 {
-	int size = 0;
+	unsigned int size = 0;
 	printf("n = [%d]\n", n);
-	if(*stack)
-		{
-			size = stack_len(*stack);
-			*stack = Creat_stack_t(n, stack, size);
-		}
+	DBG;
+	if (!*stack)
+	{
+		*stack = Add_Head(stack,  n);
+		printf(">> %d",(*stack)->n);
+	}
 	else
-		*stack = creat_One(n);
+		{
+			DBG;
+			size = stack_len(*stack);
+			DBG;
+			*stack = insert_stack_at_index(stack, size, n);
+		}
+
+	DBG;
 
 
 }

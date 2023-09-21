@@ -24,6 +24,7 @@ size_t Get_Inout(char *filePath)
 		line++;
 		command  = malloc(1000 * sizeof(char));
 		status = getline(&command, &size, file);
+		DBG;
 		// rm_newLine(command);
 
 		if (!strlen(command))

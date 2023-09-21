@@ -7,7 +7,7 @@ int main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 
 
-
+  DBG;
   Get_Inout(argv[1]);
 
 

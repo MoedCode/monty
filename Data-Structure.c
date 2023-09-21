@@ -1,71 +1,130 @@
 #include "monty.h"
+
+
+
 /**
- * creat_One -  adds a new node
+ * Add_Head -  adds a new node
  * with null previous and next filelds
+ * @H: a null pointer to an empty list
  * @n: element to be added in the linked list as the new head
  * Return: the address of the new element, or NULL if it failed
  */
-stack_t *creat_One( int n)
-{		stack_t *x = malloc(sizeof(stack_t));
- 		x->next = 0;
- 		x->prev = 0;
-		x->n  = n;
-		return (x);
+stack_t *Add_Head(stack_t **H, int n)
+{
+	stack_t *N = malloc(sizeof(stack_t));
 
+	if (!N)
+		return (NULL);
+	N->n = n;
+	N->next = NULL;
+	N->prev = NULL;
+	*H = N;
+	return (N);
 }
 /**
- * Creat_stack_t - inserts a new node at a given position
+ * add_stack -  adds a new node at the beginning of
+ *a stack_t list.
  *
- * @LIST:double pointer to Hrad node
- * @index: the given position
+ * @head: pointer to pointer to head
+ * @n: new node integer value
+ * Return: stack_t* new added node
+ */
+stack_t *add_stack(stack_t **head, const int n)
+{
+	stack_t *NODE, *HEAD  = *head;
+
+		if (!head)
+			return (NULL);
+		if (!*head)
+			return (Add_Head(head, n));
+	NODE = malloc(sizeof(stack_t) * 1);
+	if (!NODE)
+		return (NULL);
+
+	/* NRW NODE*/
+	NODE->n = n;
+	NODE->prev = NULL;
+	NODE->next = HEAD;
+	/*HEAD*/
+	(*head)->prev = NODE;
+
+	*head = NODE;
+
+	return (NODE);
+}
+
+
+/**
+ * insert_stack_at_index - inserts a new node at a given position
+ *
+ * @h:double pointer to Hrad node
+ * @idx: the given position
  * @n:inter value all node data
  * Return: stack_t* momory address of  added node,
  *(NULL) if it fail to add node
  */
-stack_t *Creat_stack_t( int n, stack_t **LIST, int index);
-stack_t *Creat_stack_t( int n, stack_t **LIST, int index)
+stack_t *insert_stack_at_index(stack_t **h, unsigned int idx, int n)
 {
-	int i;
-	stack_t *tmp, *List_;
+	size_t i;
+	stack_t *H = *h, *midNode;
 
-	if (n || !LIST)
-			return (0);
-	if (!*LIST ||  (index == 0 && !*LIST))
-		return  ( creat_One(n));
-	if (LIST && index == 0)
+	if (idx == 0)
+		return (add_stack(h, n));
+
+	for (i = 0; H; i++, H = H->next)
+	{
+		if (H->next == NULL && i + 1 == idx)
+			return (add_stack_end(h, n));
+		if (i == idx)
 		{
-			tmp = creat_One(n);
-			tmp->prev = 0;
-			tmp->next = (*LIST);
-			(*LIST)->next->prev =tmp;
+			midNode = malloc(sizeof(stack_t));
+			if (!midNode)
+				return (NULL);
+			midNode->n = n;
+			midNode->next = H;
+			midNode->prev = H->prev;
 
-				return (tmp);
-
+			H->prev->next = midNode;
+			H->prev = midNode;
+			return (midNode);
 		}
-		for (i = 0, List_ = *LIST; List_->next; List_ = List_->next, i++ )
-		{
-			if (i == index)
-			{
-				tmp = creat_One(n);
-				tmp->next = List_;
-				tmp->prev = List_->prev;
 
-				List_->prev = tmp;
+	}
 
-				return (tmp);
+		return (NULL);
+}
+/**
+ * add_stack_end -  adds a new node at the  end  of
+ *a stack_t list.
+ *
+ * @head: pointer to pointer to head
+ * @n: new node integer value
+ * Return: stack_t* new added node
+ */
+stack_t *add_stack_end(stack_t **head, const int n)
+{
+	stack_t *NODE, *HEAD  = *head;
 
-			}
-			if (index == i + 1 && !List_->next )
-			{
-				tmp = creat_One(n);
-				List_->next = tmp;
-				tmp->prev = List_;
-				return (tmp);
+		if (!head)
+			return (NULL);
+		if (!*head)
+			return (Add_Head(head, n));
+	NODE = malloc(sizeof(stack_t) * 1);
+	if (!NODE)
+		return (NULL);
+	while (HEAD->next)
+		HEAD = HEAD->next;
+	/* NRW NODE*/
+	NODE->n = n;
+	NODE->prev = HEAD;
+	NODE->next = NULL;
+	/* (*head)->prev = NODE; */
+	HEAD->next = NODE;
 
-			}
-		}
-		return (0);
- }
+
+
+	return (NODE);
+}
 
 
 /**
