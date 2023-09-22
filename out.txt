@@ -1,0 +1,42 @@
+/**
+ * push - Pushes an element onto the stack in reverse order (FILO).
+ * @stack: A pointer to the top of the stack.
+ * @line_number: The current line number in the Monty byte code file.
+ *
+ * Description: The push_rev function adds a new node to the beginning of the
+ * stack, effectively reversing the order of elements.
+ */
+void push(stack_t **stack,  unsigned int line_number)
+{
+	push_rev(stack, line_number);
+	/*
+	stack_t *new_node = creat_One(n);
+
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+
+	if (*stack == NULL)
+	{
+
+		*stack = new_node;
+	}
+	else
+	{
+		stack_t *tmp = *stack;
+
+
+		while (tmp->next != NULL)
+		{
+			tmp = tmp->next;
+		}
+
+
+		tmp->next = new_node;
+		new_node->prev = tmp;
+	}
+	line_number = line_number;
+	*/
+}

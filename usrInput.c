@@ -33,7 +33,7 @@ size_t Get_Inout(char *filePath)
 			FreeVar(command);
 			break;
 		}
-		CATA = Tokenize_in_Arr(command, " \n");
+		CATA = Tokenize_in_Arr(command, " $\n");
 		instructionF(CATA[0], CATA[1], line, &STACK);
 		FreeVar(command);
 		FREE_2D_ARR(CATA);

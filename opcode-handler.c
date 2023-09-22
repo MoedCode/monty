@@ -34,10 +34,14 @@ int *instructionF(char *arg0, char *arg1, unsigned int line, stack_t **list )
 			n = atoi(arg1);
 		for (i = 0; i <= 5 ; i++ )
 		{
-
+			 if(!strcmp("pall$", arg0) )
+			 {
+				printf("its kaky %s\n",arg0);DBG;
+			 }
 			if ( strcmp(opcode_arr[i].opcode, arg0) == 0 )
 			{
 			 	 opcode_arr[i].f(list, line);
+
 			}
 		}
 	}
@@ -58,7 +62,7 @@ int *instructionF(char *arg0, char *arg1, unsigned int line, stack_t **list )
  * Description: The push_rev function adds a new node to the beginning of the
  * stack, effectively reversing the order of elements.
  */
-void push_rev(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	/* Create a new node */
 	stack_t *new_node = creat_One(n);
@@ -81,58 +85,20 @@ void push_rev(stack_t **stack, unsigned int line_number)
 	/* Update the stack pointer to the new node */
 	*stack = new_node;
 }
-
 /**
- * push - Pushes an element onto the stack in reverse order (FILO).
- * @stack: A pointer to the top of the stack.
- * @line_number: The current line number in the Monty byte code file.
- *
- * Description: The push_rev function adds a new node to the beginning of the
- * stack, effectively reversing the order of elements.
+ * pint - Prints the value at the top of the stack, followed by a new line.
+ * @stack: A pointer to the head of the stack.
+ * @line_number: The line number in the Monty byte code file.
  */
-void push(stack_t **stack,  unsigned int line_number)
-{
-    stack_t *new_node = creat_One(n);
-
-    if (new_node == NULL)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
-
-    if (*stack == NULL)
-    {
-
-        *stack = new_node;
-    }
-    else
-    {
-        stack_t *tmp = *stack;
-
-
-        while (tmp->next != NULL)
-        {
-            tmp = tmp->next;
-        }
-
-
-        tmp->next = new_node;
-        new_node->prev = tmp;
-    }
-	line_number = line_number;
-}
-
-
 void pint(stack_t **stack, unsigned int line_number)
 {
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-	stack_t *tmp  = *stack;
-	for (;   tmp; tmp = tmp->next)
-		printf("%d\n",tmp->n);
-
-	/* free(*stack); */
-	line_number = line_number;
-
+	printf("%d\n", (*stack)->n);
 }
 void add(stack_t **stack, unsigned int line_number)
 {
@@ -142,8 +108,12 @@ void add(stack_t **stack, unsigned int line_number)
 }
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack = stack;
-	line_number = line_number;
+		if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	Print_stack(*stack);
 }
 void swap(stack_t **stack, unsigned int line_number)
 {
