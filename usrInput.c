@@ -25,14 +25,13 @@ size_t Get_Inout(char *filePath)
 		command  = malloc(1000 * sizeof(char));
 		status = getline(&command, &size, file);
 
-		// rm_newLine(command);
+
 
 		if (!strlen(command))
 		{
 			FreeVar(command);
 			break;
 		}
-		// printf("CMD: %s\n",command);
 		CATA = Tokenize_in_Arr(command, " \n");
 		instructionF(CATA[0], CATA[1], line);
 		FreeVar(command);

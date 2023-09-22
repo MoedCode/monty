@@ -57,55 +57,54 @@ void push(stack_t **stack,unsigned int line_number)
 {
 	unsigned int size = 0;
 
-
 	if (!*stack)
 	{
-
 		*stack = Add_Head(stack,  n);
-
 	}
 	else
 		{
-
 			size = stack_len(*stack);
-
 			*stack = insert_stack_at_index(stack, size, n);
 		}
-
-
-
-
+	line_number = line_number;
 }
+
 void pint(stack_t **stack, unsigned int line_number)
 {
-
-	// printf("n = [%d]\n", n);
+	*stack = NULL;
+	line_number = line_number;
 
 }
 void add(stack_t **stack, unsigned int line_number)
 {
+	*stack = NULL;
+	line_number = line_number;
 
-	// printf("n = [%d]\n", n);
 }
 void pall(stack_t **stack, unsigned int line_number)
 {
-
+	*stack = NULL;
+	line_number = line_number;
 }
 void swap(stack_t **stack, unsigned int line_number)
 {
-	// printf("n = [%d]\n", n);
 
+	*stack = NULL;
+	line_number = line_number;
 }
 void pop(stack_t **stack, unsigned int line_number)
 {
-	// printf("n = [%d]\n", n);
+	*stack = NULL;
+	line_number = line_number;
 }
 bool is_valid_integer(const char *str)
 {
+	int i ;
+
 	if (str == NULL || str[0] == '\0')
 		return false;
 
-	for (int i = 0; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (!isdigit(str[i]) && (i == 0 && str[i] != '-' && str[i] != '+'))
 			return false;
