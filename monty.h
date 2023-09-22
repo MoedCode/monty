@@ -83,13 +83,16 @@ size_t Print_2D_Arr(char** array, size_t isNull);
 void rm_newLine(char *string);
 
 /*opcode_handler.c*/
+
 void push( stack_t **stack, unsigned int line_number);
 void add( stack_t **stack, unsigned int line_number);
 void pall( stack_t **stack, unsigned int line_number);
 void swap( stack_t **stack, unsigned int line_number);
 void pop( stack_t **stack, unsigned int line_number);
 void pint( stack_t **stack, unsigned int line_number);
-int instructionF(char *arg0, char *arg1, unsigned int line );
+int *instructionF(char *arg0, char *arg1, unsigned int line, stack_t **list );
+
+
 bool is_valid_integer(const char *str);
 
 /* Data-Structure.c */
@@ -98,7 +101,7 @@ stack_t *Creat_stack_t( int n, stack_t **LIST, int index);
 stack_t *creat_One( int n);
 int delete_stack_t_at_index(stack_t **head, unsigned int index);
 unsigned int Print_stack(const stack_t *h);
-size_t stack_len(const stack_t *h);
+unsigned int  stack_len(const stack_t *h);
 stack_t *insert_stack_at_index(stack_t **h, unsigned int idx, int n);
 stack_t *add_stack_end(stack_t **head, const int n);
 stack_t *Add_Head(stack_t **H, int n);

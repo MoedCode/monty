@@ -208,7 +208,7 @@ unsigned int  Print_stack(const stack_t *h)
  * @h: pointer to first node
  * Return: size_t i whics number of  nodes
  */
-size_t stack_len(const stack_t *h)
+unsigned int stack_len(const stack_t *h)
 {
 	size_t i;
 	const stack_t *H = h;

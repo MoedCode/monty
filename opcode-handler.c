@@ -15,11 +15,11 @@ struct instruction_s opcode_arr[] =
 {"pint", pint},
 {NULL, NULL}
 };
-int instructionF(char *arg0, char *arg1, unsigned int line )
+int *instructionF(char *arg0, char *arg1, unsigned int line, stack_t **list )
 {
 	static int i;
 
-	stack_t **x = malloc(sizeof(stack_t));
+
 /*
 	if (arg1 == NULL || !is_valid_integer(arg1))
 		{
@@ -37,15 +37,13 @@ int instructionF(char *arg0, char *arg1, unsigned int line )
 			if (!strcmp(opcode_arr[i].opcode, arg0) )
 			{
 
-			 	 opcode_arr[i].f(x, line);
+			 	 opcode_arr[i].f(list, line);
 
 			}
 		}
 	}
-	if (i > 5)
-	{
-	Print_stack(*x);
-	}
+
+		free_stack(*list);
 
 
 	return (0);
@@ -60,12 +58,18 @@ void push(stack_t **stack,unsigned int line_number)
 	if (!*stack)
 	{
 		*stack = Add_Head(stack,  n);
+	/*	printf("node at line[%u]->n[%d]\n",line_number, (*stack)->n); */
+		printf("%d\n",(*stack)->n);
+
 	}
 	else
-		{
-			size = stack_len(*stack);
-			*stack = insert_stack_at_index(stack, size, n);
-		}
+	{
+	size = stack_len(*stack);
+	*stack = insert_stack_at_index(stack, size, n);
+		/*	printf("node at line[%u]->n[%d]\n",line_number, (*stack)->n); */
+		printf("%d\n",(*stack)->n);
+
+	}
 	line_number = line_number;
 }
 
