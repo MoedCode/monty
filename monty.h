@@ -90,6 +90,8 @@ void pall( stack_t **stack, unsigned int line_number);
 void swap( stack_t **stack, unsigned int line_number);
 void pop( stack_t **stack, unsigned int line_number);
 void pint( stack_t **stack, unsigned int line_number);
+void push_rev(stack_t **stack, unsigned int line_number);
+
 int *instructionF(char *arg0, char *arg1, unsigned int line, stack_t **list );
 
 

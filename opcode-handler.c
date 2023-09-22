@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int n;
+int n = 0;
 struct instruction_s opcode_arr[] =
 {
 {"push", push},
@@ -28,51 +28,109 @@ int *instructionF(char *arg0, char *arg1, unsigned int line, stack_t **list )
 	else
 	 	n = atoi(arg1);
 */
-	if (arg0 && arg1)
+	if (arg0 )
 	{
-		n = atoi(arg1);
+		if(arg1)
+			n = atoi(arg1);
 		for (i = 0; i <= 5 ; i++ )
 		{
 
-			if (!strcmp(opcode_arr[i].opcode, arg0) )
+			if ( strcmp(opcode_arr[i].opcode, arg0) == 0 )
 			{
-
 			 	 opcode_arr[i].f(list, line);
-
 			}
 		}
 	}
-	free_stack(list);
+
 	return (0);
 }
 
+#include "monty.h"
 
 
-void push(stack_t **stack,unsigned int line_number)
+
+
+/**
+ * push_rev - Pushes an element onto the stack in reverse order (FILO).
+ * @stack: A pointer to the top of the stack.
+ * @line_number: The current line number in the Monty byte code file.
+ *
+ * Description: The push_rev function adds a new node to the beginning of the
+ * stack, effectively reversing the order of elements.
+ */
+void push_rev(stack_t **stack, unsigned int line_number)
 {
-	unsigned int size = 0;
+	/* Create a new node */
+	stack_t *new_node = creat_One(n);
 
-	if (!*stack)
+	if (!new_node)
 	{
-		*stack = Add_Head(stack,  n);
-	/*	printf("node at line[%u]->n[%d]\n",line_number, (*stack)->n); */
-		printf("%d\n",(*stack)->n);
-
+		fprintf(stderr, "Error: malloc failed at line %u\n", line_number);
+		free_stack(stack);
+		exit(EXIT_FAILURE);
 	}
-	else
-	{
-	size = stack_len(*stack);
-	*stack = insert_stack_at_index(stack, size, n);
-		/*	printf("node at line[%u]->n[%d]\n",line_number, (*stack)->n); */
-		printf("%d\n",(*stack)->n);
 
-	}
+	/* Link the new node to the stack */
+	new_node->next = *stack;
+	new_node->prev = NULL;
+
+	/* Update the previous pointer of the current top node */
+	if (*stack)
+		(*stack)->prev = new_node;
+
+	/* Update the stack pointer to the new node */
+	*stack = new_node;
+}
+
+/**
+ * push - Pushes an element onto the stack in reverse order (FILO).
+ * @stack: A pointer to the top of the stack.
+ * @line_number: The current line number in the Monty byte code file.
+ *
+ * Description: The push_rev function adds a new node to the beginning of the
+ * stack, effectively reversing the order of elements.
+ */
+void push(stack_t **stack,  unsigned int line_number)
+{
+    stack_t *new_node = creat_One(n);
+
+    if (new_node == NULL)
+    {
+        fprintf(stderr, "Error: malloc failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (*stack == NULL)
+    {
+
+        *stack = new_node;
+    }
+    else
+    {
+        stack_t *tmp = *stack;
+
+
+        while (tmp->next != NULL)
+        {
+            tmp = tmp->next;
+        }
+
+
+        tmp->next = new_node;
+        new_node->prev = tmp;
+    }
 	line_number = line_number;
 }
 
+
 void pint(stack_t **stack, unsigned int line_number)
 {
-	stack = stack;
+
+	stack_t *tmp  = *stack;
+	for (;   tmp; tmp = tmp->next)
+		printf("%d\n",tmp->n);
+
+	/* free(*stack); */
 	line_number = line_number;
 
 }

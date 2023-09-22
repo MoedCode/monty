@@ -13,7 +13,7 @@ size_t Get_Inout(char *filePath)
 	unsigned int line = 0;
 	char *command, **CATA;
 	FILE *file = fopen(filePath, "r");
-	stack_t *x = NULL;
+	stack_t *STACK = NULL;
 
 	if (!file)
 	{
@@ -34,7 +34,7 @@ size_t Get_Inout(char *filePath)
 			break;
 		}
 		CATA = Tokenize_in_Arr(command, " \n");
-		instructionF(CATA[0], CATA[1], line, &x);
+		instructionF(CATA[0], CATA[1], line, &STACK);
 		FreeVar(command);
 		FREE_2D_ARR(CATA);
 
@@ -42,6 +42,8 @@ size_t Get_Inout(char *filePath)
 		if (status == -1 )
 			fclose(file);
 
+
+	free_stack(&STACK);
 	return (size);
 
 }

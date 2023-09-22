@@ -38,13 +38,11 @@ void free_stack(stack_t **head)
 {
 
 	stack_t *tmp = *head;
-		if(!head || tmp)
-			return;
 	while (tmp)
 	{
 		stack_t *next = tmp->next;
-		if(tmp)
-			free(tmp);
+		free(tmp);
 		tmp = next;
 	}
+
 }
