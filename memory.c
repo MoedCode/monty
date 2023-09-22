@@ -34,15 +34,17 @@ size_t Free_2D_Array(char **Array)
  * @head:  pointer of the head node.
  * Return: VOID
  */
-void free_stack(stack_t *head)
+void free_stack(stack_t **head)
 {
-	stack_t *tmp = head;
 
+	stack_t *tmp = *head;
+		if(!head || tmp)
+			return;
 	while (tmp)
 	{
 		stack_t *next = tmp->next;
-
-		free(tmp);
+		if(tmp)
+			free(tmp);
 		tmp = next;
 	}
 }

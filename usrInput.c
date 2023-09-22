@@ -41,6 +41,7 @@ size_t Get_Inout(char *filePath)
 	}
 		if (status == -1 )
 			fclose(file);
+
 	return (size);
 
 }

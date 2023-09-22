@@ -42,10 +42,7 @@ int *instructionF(char *arg0, char *arg1, unsigned int line, stack_t **list )
 			}
 		}
 	}
-
-		free_stack(*list);
-
-
+	free_stack(list);
 	return (0);
 }
 
@@ -75,30 +72,30 @@ void push(stack_t **stack,unsigned int line_number)
 
 void pint(stack_t **stack, unsigned int line_number)
 {
-	*stack = NULL;
+	stack = stack;
 	line_number = line_number;
 
 }
 void add(stack_t **stack, unsigned int line_number)
 {
-	*stack = NULL;
+	stack = stack;
 	line_number = line_number;
 
 }
 void pall(stack_t **stack, unsigned int line_number)
 {
-	*stack = NULL;
+	stack = stack;
 	line_number = line_number;
 }
 void swap(stack_t **stack, unsigned int line_number)
 {
 
-	*stack = NULL;
+	stack = stack;
 	line_number = line_number;
 }
 void pop(stack_t **stack, unsigned int line_number)
 {
-	*stack = NULL;
+	stack = stack;
 	line_number = line_number;
 }
 bool is_valid_integer(const char *str)

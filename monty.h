@@ -69,7 +69,7 @@ extern int  n;
 
 /* memory.c*/
 size_t Free_2D_Array(char **Array);
-void free_stack(stack_t *head);
+void free_stack(stack_t **head);
 
 
 /* Get_Input.c*/
