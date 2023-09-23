@@ -83,19 +83,17 @@ char  **Tokenize_in_Arr(char *string, char*  delim);
 size_t Print_2D_Arr(char** array, size_t isNull);
 void rm_newLine(char *string);
 
-/*opcode_handler.c*/
 
+/* StackManager.c*/
 void push( stack_t **stack, unsigned int line_number);
 void add( stack_t **stack, unsigned int line_number);
 void pall( stack_t **stack, unsigned int line_number);
 void swap( stack_t **stack, unsigned int line_number);
 void pop( stack_t **stack, unsigned int line_number);
 void pint( stack_t **stack, unsigned int line_number);
-void push_rev(stack_t **stack, unsigned int line_number);
 
+/*opcode_handler.c*/
 int *instructionF(char *arg0, char *arg1, unsigned int line, stack_t **list );
-
-
 bool is_valid_integer(const char *str);
 
 /* Data-Structure.c */
