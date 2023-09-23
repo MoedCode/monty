@@ -108,24 +108,42 @@ void add(stack_t **stack, unsigned int line_number)
 }
 void pall(stack_t **stack, unsigned int line_number)
 {
-		if (*stack == NULL)
+	if (!*stack)
+		return;
+	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "L%u: can't pall, stack empty\n", line_number);
+		n = -1;
 	}
 	Print_stack(*stack);
 }
 void swap(stack_t **stack, unsigned int line_number)
 {
 
+
 	stack = stack;
 	line_number = line_number;
 }
+/**
+ * pop - Removes the top element of the stack.
+ * @stack: A pointer to the head of the stack.
+ * @line_number: The line number in the Monty bytecode file.
+ */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack = stack;
-	line_number = line_number;
+	stack_t *top ;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pop, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	top = *stack;
+	*stack = top->next;  /* Update the stack pointer to the next element */
+	free(top);          /* Free the old top element */
 }
+
 bool is_valid_integer(const char *str)
 {
 	int i ;

@@ -70,6 +70,7 @@ extern int  n;
 /* memory.c*/
 size_t Free_2D_Array(char **Array);
 void free_stack(stack_t **head);
+void EXIT(char **array, char *command, stack_t **stack);
 
 
 /* Get_Input.c*/
@@ -108,6 +109,7 @@ stack_t *insert_stack_at_index(stack_t **h, unsigned int idx, int n);
 stack_t *add_stack_end(stack_t **head, const int n);
 stack_t *Add_Head(stack_t **H, int n);
 stack_t *add_stack(stack_t **head, const int n);
+
 
 
 

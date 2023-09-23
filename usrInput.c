@@ -26,8 +26,6 @@ size_t Get_Inout(char *filePath)
 		command  = malloc(1000 * sizeof(char));
 		status = getline(&command, &size, file);
 
-
-
 		if (!strlen(command))
 		{
 			FreeVar(command);
@@ -41,8 +39,6 @@ size_t Get_Inout(char *filePath)
 	}
 		if (status == -1 )
 			fclose(file);
-
-
 	free_stack(&STACK);
 	return (size);
 
