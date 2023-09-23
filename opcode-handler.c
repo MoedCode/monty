@@ -31,7 +31,7 @@ int *instructionF(char *arg0, char *arg1, unsigned int line, stack_t **list )
 	if (arg0 )
 	{
 		if(arg1)
-			n = atoi(arg1);
+			NCATA.n = atoi(arg1);
 		for (i = 0; i <= 5 ; i++ )
 		{
 			 if(!strcmp("pall$", arg0) )

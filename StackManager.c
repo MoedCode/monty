@@ -11,7 +11,7 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	/* Create a new node */
-	stack_t *new_node = creat_One(n);
+	stack_t *new_node = creat_One(NCATA.n);
 
 	if (!new_node)
 	{
@@ -41,7 +41,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		EXIT(stack);
 	}
 
 	printf("%d\n", (*stack)->n);
@@ -59,7 +59,8 @@ void pall(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pall, stack empty\n", line_number);
-		n = -1;
+		EXIT(stack);
+
 	}
 	Print_stack(*stack);
 }
@@ -82,7 +83,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		EXIT(stack);
 	}
 
 	top = *stack;

@@ -4,14 +4,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-char **CATA;
+n_CATA  NCATA;
 
 size_t Get_Inout(char *filePath)
 {
 	int status;
 	size_t size;
 	unsigned int line = 0;
-	char *command, **CATA;
+	char *command;
 	FILE *file = fopen(filePath, "r");
 	stack_t *STACK = NULL;
 
@@ -31,10 +31,10 @@ size_t Get_Inout(char *filePath)
 			FreeVar(command);
 			break;
 		}
-		CATA = Tokenize_in_Arr(command, " $\n");
-		instructionF(CATA[0], CATA[1], line, &STACK);
+		NCATA.CATA = Tokenize_in_Arr(command, " $\n");
+		instructionF(NCATA.CATA[0],NCATA.CATA[1], line, &STACK);
 		FreeVar(command);
-		FREE_2D_ARR(CATA);
+		FREE_2D_ARR(NCATA.CATA);
 
 	}
 		if (status == -1 )

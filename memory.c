@@ -46,11 +46,11 @@ void free_stack(stack_t **head)
 	}
 
 }
-void EXIT(char **array, char *command, stack_t **stack)
+void EXIT( stack_t **stack)
 {
 	printf("EXIT, &%p\n", (void *)*stack);
-	FreeVar(command);
-	Free_2D_Array(array);
-		free_stack(stack);
+	FreeVar(NCATA.command);
+	Free_2D_Array(NCATA.CATA);
+	free_stack(stack);
 	exit(EXIT_FAILURE);
 }

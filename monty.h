@@ -31,6 +31,14 @@ if (arr)\
 } \
 } while(0)
 
+typedef struct n_CATA
+{
+  int n;
+  char **CATA;
+  char *command;
+
+}n_CATA ;
+
 /* Data structures */
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -62,7 +70,7 @@ typedef struct instruction_s
 } instruction_t;
 /*""" Global Variables"""*/
 /* Commandline Argument Tpokinaized Array*/
-extern int  n;
+extern n_CATA  NCATA;
 
 
 /*""" Functions Prototype """"*/
@@ -70,7 +78,7 @@ extern int  n;
 /* memory.c*/
 size_t Free_2D_Array(char **Array);
 void free_stack(stack_t **head);
-void EXIT(char **array, char *command, stack_t **stack);
+void EXIT( stack_t **stack);
 
 
 /* Get_Input.c*/
