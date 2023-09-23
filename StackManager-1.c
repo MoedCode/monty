@@ -14,7 +14,7 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *top ;
+	stack_t *top;
 
 	if (*stack == NULL)
 	{

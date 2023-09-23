@@ -51,7 +51,7 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	if (*stack == NULL)
+	if (!*stack)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		EXIT(stack);
@@ -61,10 +61,25 @@ void pint(stack_t **stack, unsigned int line_number)
 }
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack = stack;
-	line_number = line_number;
+	int sum;
 
+	if (!stack || !*stack)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		EXIT(stack);
+	}
+
+	if (stack_len(*stack) < 2)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		EXIT(stack);
+	}
+
+	sum = (*stack)->n + (*stack)->next->n;
+	pop(stack, line_number);
+	(*stack)->n = sum;
 }
+
 void pall(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack)
