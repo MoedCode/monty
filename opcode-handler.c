@@ -13,6 +13,7 @@ struct instruction_s opcode_arr[] =
 {"swap", swap},
 {"pop", pop},
 {"pint", pint},
+{"sub", sub},
 {NULL, NULL}
 };
 int *instructionF(  stack_t **list )
@@ -24,7 +25,7 @@ int *instructionF(  stack_t **list )
 	if (arg0 )
 	{
 
-		for (i = 0; i <= 5 ; i++ )
+		for (i = 0; opcode_arr[i].opcode ; i++ )
 		{
 
 			if ( strcmp(opcode_arr[i].opcode, arg0) == 0 )

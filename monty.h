@@ -30,6 +30,30 @@ if (arr)\
 		arr = NULL; \
 } \
 } while(0)
+# define IF_NULL_STACK \
+{\
+	if (!stack || !*stack)\
+	{\
+		fprintf(stderr, "L%u: can't pop, stack empty\n", line_number);\
+		EXIT(stack);\
+	}\
+}
+#define MALLOC(ptr)\
+{\
+	if (!ptr )\
+	{\
+		fprintf(stderr, "Error: malloc failed at line %u\n", line_number);\
+		EXIT(stack);\
+	}\
+}
+#define STCK_LEN_2 \
+{\
+	if (stack_len(*stack) < 2)\
+	{\
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);\
+		EXIT(stack);\
+	}\
+}
 
 typedef struct n_CATA
 {
@@ -100,7 +124,7 @@ void pall( stack_t **stack, unsigned int line_number);
 void swap( stack_t **stack, unsigned int line_number);
 void pop( stack_t **stack, unsigned int line_number);
 void pint( stack_t **stack, unsigned int line_number);
-
+ void sub(stack_t **stack, unsigned int line_number);
 /*opcode_handler.c*/
 int *instructionF(  stack_t **list );
 bool is_valid_integer(const char *str);
