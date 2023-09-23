@@ -66,3 +66,36 @@ stack_t *Creat_stack_t( int n, stack_t **LIST, int index)
 		}
 		return (0);
  }
+/**
+ *print_stack - print linked singaly list nodes
+ * @h: pointer to first node
+ * Return: size_t i whics number of printd  nodes
+ */
+unsigned int  Print_stack(const stack_t *h)
+{
+	unsigned int  i;
+	const stack_t *H = h;
+
+	for (i = 0; H; i++)
+	{
+		printf("%d\n", H->n);
+		H = H->next;
+	}
+	return (i);
+}
+/**
+ *stack_len - return  singaly list length
+ * @h: pointer to first node
+ * Return: size_t i whics number of  nodes
+ */
+unsigned int stack_len(const stack_t *h)
+{
+	size_t i;
+	const stack_t *H = h;
+
+	for (i = 0; H; i++)
+	{
+		H = H->next;
+	}
+	return (i);
+}
