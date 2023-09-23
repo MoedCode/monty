@@ -10,9 +10,9 @@ n_CATA  NCATA;
 
 size_t Get_Inout(char *filePath)
 {
-	int status;
-	size_t size;
-	char *command;
+	int status = 0;
+	size_t size  = 0;
+	char *command = NULL;
 	FILE *file = fopen(filePath, "r");
 	stack_t *STACK = NULL;
 	NCATA.line = 0;
@@ -28,7 +28,7 @@ size_t Get_Inout(char *filePath)
 
 		NCATA.line +=1;
 		command  = malloc(1000 * sizeof(char));
-		status = getline(&command, &size, file);
+		status = getline(&command, NULL, file);
 
 		if (!strlen(command))
 		{
