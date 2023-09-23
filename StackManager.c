@@ -1,4 +1,6 @@
 #include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * push_rev - Pushes an element onto the stack in reverse order (FILO).
@@ -11,14 +13,25 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	/* Create a new node */
-	stack_t *new_node = creat_One(NCATA.n);
 
-	if (!new_node)
+	stack_t *new_node;
+
+	if (NCATA.CATA[1])
+		NCATA.n = atoi(NCATA.CATA[1]);
+	else
+	 {
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		EXIT(stack);
+	 }
+
+	new_node = creat_One(NCATA.n);
+	if (!new_node )
 	{
+
 		fprintf(stderr, "Error: malloc failed at line %u\n", line_number);
-		free_stack(stack);
-		exit(EXIT_FAILURE);
+		EXIT(stack);
 	}
+
 
 	/* Link the new node to the stack */
 	new_node->next = *stack;

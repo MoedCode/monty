@@ -36,6 +36,7 @@ typedef struct n_CATA
   int n;
   char **CATA;
   char *command;
+  unsigned int line;
 
 }n_CATA ;
 
@@ -101,7 +102,7 @@ void pop( stack_t **stack, unsigned int line_number);
 void pint( stack_t **stack, unsigned int line_number);
 
 /*opcode_handler.c*/
-int *instructionF(char *arg0, char *arg1, unsigned int line, stack_t **list );
+int *instructionF(  stack_t **list );
 bool is_valid_integer(const char *str);
 
 /* Data-Structure.c */

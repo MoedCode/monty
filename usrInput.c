@@ -6,14 +6,16 @@
 
 n_CATA  NCATA;
 
+
+
 size_t Get_Inout(char *filePath)
 {
 	int status;
 	size_t size;
-	unsigned int line = 0;
 	char *command;
 	FILE *file = fopen(filePath, "r");
 	stack_t *STACK = NULL;
+	NCATA.line = 0;
 
 	if (!file)
 	{
@@ -22,7 +24,9 @@ size_t Get_Inout(char *filePath)
 	}
 	while (status != -1)
 	{
-		line++;
+
+
+		NCATA.line +=1;
 		command  = malloc(1000 * sizeof(char));
 		status = getline(&command, &size, file);
 
@@ -32,7 +36,7 @@ size_t Get_Inout(char *filePath)
 			break;
 		}
 		NCATA.CATA = Tokenize_in_Arr(command, " $\n");
-		instructionF(NCATA.CATA[0],NCATA.CATA[1], line, &STACK);
+		instructionF( &STACK);
 		FreeVar(command);
 		FREE_2D_ARR(NCATA.CATA);
 

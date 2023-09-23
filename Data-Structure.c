@@ -1,7 +1,4 @@
 #include "monty.h"
-
-
-
 /**
  * Add_Head -  adds a new node
  * with null previous and next filelds
