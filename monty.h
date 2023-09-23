@@ -61,6 +61,7 @@ typedef struct n_CATA
   char **CATA;
   char *command;
   unsigned int line;
+  size_t size;
 
 }n_CATA ;
 
@@ -107,7 +108,7 @@ void EXIT( stack_t **stack);
 
 
 /* Get_Input.c*/
-size_t Get_Inout(char *filePath);
+void  Get_Inout(char *filePath);
 
 
 

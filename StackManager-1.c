@@ -7,9 +7,7 @@
 void swap(stack_t **stack, unsigned int line_number)
 {
 
-
-	stack = stack;
-	line_number = line_number;
+	IF_NULL_STACK
 }
 /**
  * pop - Removes the top element of the stack.
