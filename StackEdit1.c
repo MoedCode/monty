@@ -34,11 +34,6 @@ void comments(stack_t **stack, unsigned int line_number)
 void pchar(stack_t **stack, unsigned int line_number)
 {
 
-	if (!strcmp(NCATA.CATA[0], "pchar") && !*stack)
-	{
-		printf("1\n");
-		EXIT(stack);
-	}
 	if (!stack || !*stack)
 	{
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
@@ -52,4 +47,29 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	putchar((*stack)->n);
 	putchar(10);
+}
+
+
+/**
+ * pstr - Prints the string starting at the top of the stack, followed by a new line.
+ * @stack: A pointer to the head of the stack.
+ * @line_number: The line number in the Monty bytecode file.
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	while (current && current->n != 0)
+	{
+		if (current->n < 0 || current->n > 127)
+		{
+			fprintf(stderr, "L%u: can't pstr, value out of range\n", line_number);
+			EXIT(stack);
+		}
+
+		putchar((char)(current->n));
+		current = current->next;
+	}
+
+	putchar('\n');
 }
