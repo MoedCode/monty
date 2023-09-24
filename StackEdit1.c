@@ -24,10 +24,11 @@ void comments(stack_t **stack, unsigned int line_number)
 }
 
 
+
 /**
- * pchar - Prints the ASCII value at the top of the stack as a character, followed by a new line.
+ * pchar - Prints the ASCII  value at the top of the stack, followed by a new line.
  * @stack: A pointer to the head of the stack.
- * @line_number: The line number in the Monty bytecode file.
+ * @line_number: The line number in the Monty byte code file.
  */
 void pchar(stack_t **stack, unsigned int line_number)
 {
@@ -36,15 +37,10 @@ void pchar(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		EXIT(stack);
 	}
-	if ((*stack)->n < 0 || (*stack)->n > 127)
-	{
+	if ((*stack)->n > 127)
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
-		EXIT(stack);
-	}
 
 	putchar((*stack)->n);
-	putchar('\n');
-
-	/* Pop the top element from the stack */
+	putchar(10);
 	pop(stack, line_number);
 }
