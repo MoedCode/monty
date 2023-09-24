@@ -39,7 +39,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pchar, stack empt\n", line_number);
 		EXIT(stack);
 	}
-	if ((*stack)->n >= 0 &&  (*stack)->n <= 177 )
+	if ((*stack)->n >= 0 &&  (*stack)->n <= 126 )
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 
 	putchar((*stack)->n);
