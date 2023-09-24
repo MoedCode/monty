@@ -78,6 +78,26 @@ void divf(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n /= (*stack)->n;
 	pop(stack, line_number);
 }
+#include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+/**
+ * mul - Multiplies the second top element of the stack with the top element.
+ * @stack: Double pointer to the beginning of the stack.
+ * @line_number: The line number of the opcode in the Monty bytecode file.
+ */
+void mul(stack_t **stack, unsigned int line_number)
+{
+	if (!stack || !*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
+		EXIT(stack);
+	}
+
+	(*stack)->next->n *= (*stack)->n;
+	pop(stack, line_number);
+}
 
 
 
