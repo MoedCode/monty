@@ -30,21 +30,38 @@ size_t Free_2D_Array(char **Array)
 	return (i);
 }
 /**
- * free_stack -  frees a stack_t list.
- * @head:  pointer of the head node.
- * Return: VOID
+ * free_node - Frees a node and updates its neighbors
+ * @node: The node to be freed
+ */
+void free_node(stack_t *node)
+{
+	if (node)
+	{
+		if (node->prev)
+			node->prev->next = node->next;
+		if (node->next)
+			node->next->prev = node->prev;
+		free(node);
+	}
+}
+
+/**
+ * free_stack - Frees the entire stack
+ * @head: A pointer to the head of the stack
  */
 void free_stack(stack_t **head)
 {
+	stack_t *current = *head;
+	stack_t *next;
 
-	stack_t *tmp = *head;
-	while (tmp)
+	while (current)
 	{
-		stack_t *next = tmp->next;
-		free(tmp);
-		tmp = next;
+		next = current->next;
+		free_node(current);
+		current = next;
 	}
 
+	*head = NULL;
 }
 void EXIT( stack_t **stack)
 {
