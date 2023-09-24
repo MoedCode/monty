@@ -83,25 +83,25 @@ void pstr(stack_t **stack, unsigned int line_number)
  */
 void rotl(stack_t **stack, unsigned int line_number)
 {
-	stack_t *first, *second;
+	stack_t *nodeB, *nodeA;
 
 	(void)line_number;
 
 	if (*stack && (*stack)->next)
 	{
-		first = *stack;
-		second = (*stack)->next;
+		nodeB = *stack;
+		nodeA = (*stack)->next;
 
-		while (second->next)
+		while (nodeA->next)
 		{
-			first = second;
-			second = second->next;
+			nodeB = nodeA;
+			nodeA = nodeA->next;
 		}
 
-		second->next = *stack;
-		(*stack)->prev = second;
+		nodeA->next = *stack;
+		(*stack)->prev = nodeA;
 		(*stack)->next = NULL;
-		first->next = NULL;
-		(*stack) = second;
+		nodeB->next = NULL;
+		(*stack) = nodeA;
 	}
 }

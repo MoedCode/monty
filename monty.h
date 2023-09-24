@@ -128,6 +128,9 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 
+/*StackEdit2.c*/
+void rotr(stack_t **stack, unsigned int line_number);
+
 /* Calc0 */
 void add(stack_t **stack, unsigned int line_number);
  void sub(stack_t **stack, unsigned int line_number);
