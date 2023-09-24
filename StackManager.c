@@ -58,20 +58,24 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", (*stack)->n);
 }
-void add(stack_t **stack, unsigned int line_number)
+/**
+ * pop - Removes the top element of the stack.
+ * @stack: A pointer to the head of the stack.
+ * @line_number: The line number in the Monty bytecode file.
+ */
+void pop(stack_t **stack, unsigned int line_number)
 {
-	int sum;
+	stack_t *top;
 
 	if (!stack || !*stack)
 	{
-		fprintf(stderr, "L%u: can't add an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		EXIT(stack);
 	}
-	STCK_LEN_2
 
-	sum = (*stack)->n + (*stack)->next->n;
-	pop(stack, line_number);
-	(*stack)->n = sum;
+	top = *stack;
+	*stack = top->next;  /* Update the stack pointer to the next element */
+	free(top);          /* Free the old top element */
 }
 
 void pall(stack_t **stack, unsigned int line_number)
