@@ -20,6 +20,7 @@ struct instruction_s opcode_arr[] =
 {"div", divf},
 {"mul", mul},
 {"mod", mod},
+{"#", comments},
 
 {NULL, NULL}
 };
