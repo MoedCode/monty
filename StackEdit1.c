@@ -34,9 +34,12 @@ void pchar(stack_t **stack, unsigned int line_number)
 {
 	if (!stack || !*stack)
 	{
-		fprintf(stderr, "L%u: can't pint an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		EXIT(stack);
 	}
+	if ((*stack)->n > 127)
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+
 	putchar((*stack)->n);
 	putchar(10);
 }
