@@ -32,20 +32,14 @@ void comments(stack_t **stack, unsigned int line_number)
  */
 void pchar(stack_t **stack, unsigned int line_number)
 {
-
-
 	if (!stack || !*stack)
 	{
-		fprintf(stderr, "L%u: can't pchar, stack empt\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		EXIT(stack);
 	}
-	if ((*stack)->n >= 0 &&  (*stack)->n <= 127)
-	{
+	if ((*stack)->n > 127)
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
-		EXIT(stack);
-	}
 
 	putchar((*stack)->n);
 	putchar(10);
-
 }
