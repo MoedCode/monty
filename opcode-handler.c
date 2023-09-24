@@ -8,14 +8,17 @@ int n = 0;
 struct instruction_s opcode_arr[] =
 {
 {"push", push},
-{"add", add},
 {"pall", pall},
 {"swap", swap},
 {"pop", pop},
 {"pint", pint},
-{"sub", sub},
 {"nop", nop},
+{"add", add},
+{"sub", sub},
 {"div", divf},
+{"mul", mul},
+{"mod", mod},
+
 {NULL, NULL}
 };
 int *instructionF(  stack_t **list )
