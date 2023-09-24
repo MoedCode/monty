@@ -1,5 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
+#include <string.h>
 /**
  * nop - Doesn't do anything.
  * @stack: Double pointer to the beginning of the stack.
@@ -32,6 +33,12 @@ void comments(stack_t **stack, unsigned int line_number)
  */
 void pchar(stack_t **stack, unsigned int line_number)
 {
+
+	if (!strcmp(NCATA.CATA[0], "pchar") && !*stack)
+	{
+		printf("1\n");
+		EXIT(stack);
+	}
 	if (!stack || !*stack)
 	{
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
