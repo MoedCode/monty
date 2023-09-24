@@ -124,6 +124,7 @@ void swap(stack_t **stack, unsigned int line_number);
 /*StackEdit1.c*/
 void nop(stack_t **stack, unsigned int line_number);
 void comments(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
 
 
 /* Calc0 */

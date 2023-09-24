@@ -25,3 +25,18 @@ void comments(stack_t **stack, unsigned int line_number)
 
 
 
+/**
+ * pchar - Prints the ASCII  value at the top of the stack, followed by a new line.
+ * @stack: A pointer to the head of the stack.
+ * @line_number: The line number in the Monty byte code file.
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	if (!stack || !*stack)
+	{
+		fprintf(stderr, "L%u: can't pint an empty stack\n", line_number);
+		EXIT(stack);
+	}
+	putchar((*stack)->n);
+	putchar(10);
+}

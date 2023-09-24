@@ -1,12 +1,9 @@
-#
-nop
-push  50
-#
-nop
-push 10
-#
-nop
-pall
-mod
-#
-nop
+
+push 72
+push 73
+push 33
+pchar
+output should be
+H
+I
+!

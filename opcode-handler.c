@@ -21,6 +21,7 @@ struct instruction_s opcode_arr[] =
 {"mul", mul},
 {"mod", mod},
 {"#", comments},
+{"pchar", pchar},
 
 {NULL, NULL}
 };
