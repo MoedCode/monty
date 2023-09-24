@@ -30,14 +30,7 @@ if (arr)\
 		arr = NULL; \
 } \
 } while(0)
-# define IF_NULL_STACK \
-{\
-	if (!stack || !*stack)\
-	{\
-		fprintf(stderr, "L%u: can't pop, stack empty\n", line_number);\
-		EXIT(stack);\
-	}\
-}
+
 #define MALLOC(ptr)\
 {\
 	if (!ptr )\
@@ -55,15 +48,6 @@ if (arr)\
 	}\
 }
 
-typedef struct n_CATA
-{
-  int n;
-  char **CATA;
-  char *command;
-  unsigned int line;
-  size_t size;
-
-}n_CATA ;
 
 /* Data structures */
 /**
@@ -94,6 +78,18 @@ typedef struct instruction_s
 		char *opcode;
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+typedef struct n_CATA
+{
+  int n ;
+  int status;
+  char **CATA;
+  char *command;
+  unsigned int line;
+ size_t size;
+  stack_t *STACK;
+
+}n_CATA ;
+
 /*""" Global Variables"""*/
 /* Commandline Argument Tpokinaized Array*/
 extern n_CATA  NCATA;

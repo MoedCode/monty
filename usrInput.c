@@ -10,9 +10,9 @@ n_CATA  NCATA;
 
 void Get_Inout(char *filePath)
 {
-	int status = 0;
+
 	FILE *file = fopen(filePath, "r");
-	stack_t *STACK = NULL;
+
 	NCATA.line = 0;
 
 	if (!file)
@@ -20,13 +20,13 @@ void Get_Inout(char *filePath)
 		fprintf(stderr, "Error: Can't open file %s\n", filePath);
 		exit(EXIT_FAILURE);
 	}
-	while (status != -1)
+	while (NCATA.status  != -1)
 	{
 
 
 		NCATA.line +=1;
-		NCATA.command  = malloc(1000 * sizeof(char));
-		status = getline(&NCATA.command, &NCATA.size, file);
+		NCATA.command = NULL;
+		NCATA.status = getline(&NCATA.command, &NCATA.size, file);
 
 		if (!strlen(NCATA.command))
 		{
@@ -34,14 +34,14 @@ void Get_Inout(char *filePath)
 			break;
 		}
 		NCATA.CATA = Tokenize_in_Arr(NCATA.command, " $\n");
-		instructionF( &STACK);
+		instructionF( &NCATA.STACK);
 		FreeVar(NCATA.command);
 		FREE_2D_ARR(NCATA.CATA);
 
 	}
-		if (status == -1 )
+		if (NCATA.status == -1 )
 			fclose(file);
-	free_stack(&STACK);
+	free_stack(&NCATA.STACK);
 	return ;
 
 }

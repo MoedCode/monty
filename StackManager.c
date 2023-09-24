@@ -51,14 +51,22 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	IF_NULL_STACK
+	if (!stack || !*stack)
+	{
+		fprintf(stderr, "L%u: can't pint an empty stack\n", line_number);
+		EXIT(stack);
+	}
 	printf("%d\n", (*stack)->n);
 }
 void add(stack_t **stack, unsigned int line_number)
 {
 	int sum;
 
-	IF_NULL_STACK
+	if (!stack || !*stack)
+	{
+		fprintf(stderr, "L%u: can't add an empty stack\n", line_number);
+		EXIT(stack);
+	}
 	STCK_LEN_2
 
 	sum = (*stack)->n + (*stack)->next->n;
@@ -68,6 +76,7 @@ void add(stack_t **stack, unsigned int line_number)
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	IF_NULL_STACK
-	Print_stack(*stack);
+    Print_stack(*stack);
+    (void)line_number;
 }
+

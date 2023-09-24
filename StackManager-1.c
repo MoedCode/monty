@@ -7,7 +7,11 @@
 void swap(stack_t **stack, unsigned int line_number)
 {
 
-	IF_NULL_STACK
+	if (!stack || !*stack)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		EXIT(stack);
+	}
 }
 /**
  * pop - Removes the top element of the stack.
@@ -18,7 +22,11 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top;
 
-	IF_NULL_STACK
+	if (!stack || !*stack)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		EXIT(stack);
+	}
 
 	top = *stack;
 	*stack = top->next;  /* Update the stack pointer to the next element */
@@ -31,7 +39,11 @@ void pop(stack_t **stack, unsigned int line_number)
  */
  void sub(stack_t **stack, unsigned int line_number)
 {
-	IF_NULL_STACK
+	if (!stack || !*stack)
+	{
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
+		EXIT(stack);
+	}
 	STCK_LEN_2
 	(*stack)->next->n = (*stack)->next->n - (*stack)->n;
 	delete_stack_t_at_index(stack, 0);
