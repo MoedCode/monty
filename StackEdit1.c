@@ -32,9 +32,11 @@ void comments(stack_t **stack, unsigned int line_number)
  */
 void pchar(stack_t **stack, unsigned int line_number)
 {
+	stack_t *tmp = *stack;
+
 	if (!stack || !*stack)
 	{
-		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, stack empt\n", line_number);
 		EXIT(stack);
 	}
 	if ((*stack)->n > 127)
@@ -42,5 +44,6 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	putchar((*stack)->n);
 	putchar(10);
-	pop(stack, line_number -1);
+	*stack = (*stack)->next;
+	free(tmp);
 }
