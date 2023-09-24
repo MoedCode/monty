@@ -1,9 +1,4 @@
+push  50
+push 10
 pall
-push 1
-pall
-push 2
-pall
-push 3
-pall
-push 4
-pall
+mod

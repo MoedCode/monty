@@ -80,9 +80,6 @@ void mul(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 
-#include "monty.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * mod - Computes the rest of the division of the second top element
