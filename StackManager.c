@@ -74,13 +74,13 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 
 	top = *stack;
-	*stack = top->next;  /* Update the stack pointer to the next element */
-	free(top);          /* Free the old top element */
+	*stack = top->next;
+	free(top);
 }
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-    Print_stack(*stack);
-    (void)line_number;
+	Print_stack(*stack);
+	(void)line_number;
 }
 

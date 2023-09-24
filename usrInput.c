@@ -10,10 +10,7 @@ n_CATA  NCATA;
 
 void Get_Inout(char *filePath)
 {
-
 	FILE *file = fopen(filePath, "r");
-
-	NCATA.line = 0;
 
 	if (!file)
 	{
@@ -22,9 +19,7 @@ void Get_Inout(char *filePath)
 	}
 	while (NCATA.status  != -1)
 	{
-
-
-		NCATA.line +=1;
+		NCATA.line++;
 		NCATA.command = NULL;
 		NCATA.status = getline(&NCATA.command, &NCATA.size, file);
 
@@ -37,6 +32,8 @@ void Get_Inout(char *filePath)
 		instructionF( &NCATA.STACK);
 		FreeVar(NCATA.command);
 		FREE_2D_ARR(NCATA.CATA);
+
+
 
 	}
 		if (NCATA.status == -1 )

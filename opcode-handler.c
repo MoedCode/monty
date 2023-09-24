@@ -14,23 +14,24 @@ struct instruction_s opcode_arr[] =
 {"pop", pop},
 {"pint", pint},
 {"sub", sub},
+{"nop", nop},
+{"div", divf},
 {NULL, NULL}
 };
 int *instructionF(  stack_t **list )
 {
 	 int i;
-	char* arg0 = NCATA.CATA[0];
-	unsigned int line = NCATA.line;
 
-	if (arg0 )
+
+	if (NCATA.CATA[0] )
 	{
 
 		for (i = 0; opcode_arr[i].opcode ; i++ )
 		{
 
-			if ( strcmp(opcode_arr[i].opcode, arg0) == 0 )
+			if ( strcmp(opcode_arr[i].opcode, NCATA.CATA[0]) == 0 )
 			{
-			 	 opcode_arr[i].f(list, line);
+			 	 opcode_arr[i].f(list, NCATA.line);
 
 			}
 		}

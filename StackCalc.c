@@ -56,4 +56,29 @@ void swap(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (*stack)->next->n - (*stack)->n;
 	delete_stack_t_at_index(stack, 0);
 }
+/**
+ * div - Divides the second top element of the stack by the top element.
+ * @stack: Double pointer to the beginning of the stack.
+ * @line_number: The line number of the opcode in the Monty bytecode file.
+ */
+void divf(stack_t **stack, unsigned int line_number)
+{
+	if (!stack || !*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
+		EXIT(stack);
+	}
+
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		EXIT(stack);
+	}
+
+	(*stack)->next->n /= (*stack)->n;
+	pop(stack, line_number);
+}
+
+
+
 
