@@ -4,8 +4,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-int n = 0;
-struct instruction_s opcode_arr[] =
+int *instructionF(  stack_t **list );
+int *instructionF(  stack_t **list )
+{
+	 int i;
+	 struct instruction_s opcode_arr[] =
 {
 /*Edit*/
 {"push", push},
@@ -23,12 +26,10 @@ struct instruction_s opcode_arr[] =
 {"#", comments},
 {"pchar", pchar},
 {"pstr", pstr},
+{"rotl", rotl},
 
 {NULL, NULL}
 };
-int *instructionF(  stack_t **list )
-{
-	 int i;
 
 	if (NCATA.CATA[0] )
 	{

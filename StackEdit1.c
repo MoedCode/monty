@@ -59,6 +59,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *cur_node = *stack;
 
+
 	while (cur_node && cur_node->n != 0)
 	{
 		if (cur_node->n < 0 || cur_node->n > 127)
@@ -67,9 +68,40 @@ void pstr(stack_t **stack, unsigned int line_number)
 			EXIT(stack);
 		}
 
-		printf("%c", cur_node->n);
+		putchar((char)(cur_node->n));
 		cur_node = cur_node->next;
 	}
 
-	putchar(10);
+	putchar('\n');
+}
+
+
+/**
+ * rotl - Rotates the stack to the top.
+ * @stack: A pointer to the head of the stack.
+ * @line_number: The line number in the Monty bytecode file.
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *first, *second;
+
+	(void)line_number;
+
+	if (*stack && (*stack)->next)
+	{
+		first = *stack;
+		second = (*stack)->next;
+
+		while (second->next)
+		{
+			first = second;
+			second = second->next;
+		}
+
+		second->next = *stack;
+		(*stack)->prev = second;
+		(*stack)->next = NULL;
+		first->next = NULL;
+		(*stack) = second;
+	}
 }
