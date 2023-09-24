@@ -84,3 +84,22 @@ void pall(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 }
 
+/**
+ * swap - Swaps the top two elements of the stack.
+ * @stack: A pointer to the stack.
+ * @line_number: The current line number being processed.
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int temp;
+
+	if (!stack || !*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		EXIT(stack);
+	}
+
+	temp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
+}

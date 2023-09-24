@@ -19,25 +19,6 @@ void add(stack_t **stack, unsigned int line_number)
 	(*stack)->n = sum;
 }
 
-/**
- * swap - Swaps the top two elements of the stack.
- * @stack: A pointer to the stack.
- * @line_number: The current line number being processed.
- */
-void swap(stack_t **stack, unsigned int line_number)
-{
-	int temp;
-
-	if (!stack || !*stack || !(*stack)->next)
-	{
-		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-		EXIT(stack);
-	}
-
-	temp = (*stack)->n;
-	(*stack)->n = (*stack)->next->n;
-	(*stack)->next->n = temp;
-}
 
 
 /**
@@ -99,6 +80,33 @@ void mul(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 
+#include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+/**
+ * mod - Computes the rest of the division of the second top element
+ *	   of the stack by the top element of the stack.
+ * @stack: Double pointer to the beginning of the stack.
+ * @line_number: The line number of the opcode in the Monty bytecode file.
+ */
+void mod(stack_t **stack, unsigned int line_number)
+{
+	if (!stack || !*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
+		EXIT(stack);
+	}
+
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		EXIT(stack);
+	}
+
+	(*stack)->next->n %= (*stack)->n;
+	pop(stack, line_number);
+}
 
 
 
