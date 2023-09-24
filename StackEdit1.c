@@ -42,5 +42,5 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	putchar((*stack)->n);
 	putchar(10);
-	pop(stack, line_number);
+	pop(stack, line_number -1);
 }
