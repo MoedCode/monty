@@ -57,19 +57,30 @@ void pchar(stack_t **stack, unsigned int line_number)
  */
 void pstr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack;
-
-	while (current && current->n != 0)
+	stack_t *cur_node = *stack;
+		if (!stack || !*stack)
 	{
-		if (current->n < 0 || current->n > 127)
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		EXIT(stack);
+	}
+	if ((*stack)->n > 127)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		EXIT(stack);
+	}
+
+
+	while (cur_node && cur_node->n != 0)
+	{
+		if (cur_node->n < 0 || cur_node->n > 127)
 		{
 			fprintf(stderr, "L%u: can't pstr, value out of range\n", line_number);
 			EXIT(stack);
 		}
 
-		putchar((char)(current->n));
-		current = current->next;
+		printf("%c", cur_node->n);
+		cur_node = cur_node->next;
 	}
 
-	putchar('\n');
+	putchar(10);
 }
