@@ -1,6 +1,7 @@
 #include "monty.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * push_rev - Pushes an element onto the stack in reverse order (FILO).
@@ -13,8 +14,15 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	/* Create a new node */
-
 	stack_t *new_node;
+
+	if (NCATA.mode == 1)
+	{
+		 push_end(stack, line_number);
+		 return;
+	}
+
+
 
 	if (NCATA.CATA[1])
 		NCATA.n = atoi(NCATA.CATA[1]);

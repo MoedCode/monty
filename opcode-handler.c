@@ -8,38 +8,16 @@ int *instructionF(  stack_t **list );
 int *instructionF(  stack_t **list )
 {
 	 int i;
-	 struct instruction_s opcode_arr[] =
-{
-/*Edit*/
-{"push", push},
-{"pall", pall},
-{"swap", swap},
-{"pop", pop},
-{"pint", pint},
-{"nop", nop},
-/*calc*/
-{"add", add},
-{"sub", sub},
-{"div", divf},
-{"mul", mul},
-{"mod", mod},
-{"#", comments},
-{"pchar", pchar},
-{"pstr", pstr},
-{"rotl", rotl},
-{"rotr", rotr},
 
-{NULL, NULL}
-};
 
 	if (NCATA.CATA[0] )
 	{
 
-		for (i = 0; opcode_arr[i].opcode ; i++ )
+		for (i = 0; NCATA.opcode_arr[i].opcode ; i++ )
 		{
-			if ( strcmp(opcode_arr[i].opcode, NCATA.CATA[0]) == 0 )
+			if ( strcmp(NCATA.opcode_arr[i].opcode, NCATA.CATA[0]) == 0 )
 			{
-			 	 opcode_arr[i].f(list, NCATA.line);
+			 	 NCATA.opcode_arr[i].f(list, NCATA.line);
 			}
 		}
 	}

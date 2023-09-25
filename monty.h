@@ -48,6 +48,11 @@ if (arr)\
 	}\
 }
 
+/* enums*/
+typedef enum {
+    STACK,
+    QUEUE
+} data_format;
 
 /* Data structures */
 /**
@@ -78,6 +83,15 @@ typedef struct instruction_s
 		char *opcode;
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+/**
+ * struct n_CATA : cintain all program variables
+ * @n: integer value to pe assign for strck_t node
+ * @status: for getline statuse
+ *@CATA:command arguments tokenize array
+ *@command:command passed to getline to get opcode command
+ *@line: to keep track of line number in monty opcode file
+ @STACK: pointer to assign headnode to it
+ */
 typedef struct n_CATA
 {
   int n ;
@@ -87,7 +101,8 @@ typedef struct n_CATA
   unsigned int line;
  size_t size;
   stack_t *STACK;
-
+  int mode;
+  instruction_t *opcode_arr;
 }n_CATA ;
 
 /*""" Global Variables"""*/
@@ -106,7 +121,10 @@ void EXIT( stack_t **stack);
 /* Get_Input.c*/
 void  Get_Inout(char *filePath);
 
-
+/*opcode_handler.c*/
+int *instructionF(  stack_t **list);
+bool is_valid_integer(const char *str);
+int *instructionF(  stack_t **list );
 
 /*String*/
 char  **Tokenize_in_Arr(char *string, char*  delim);
@@ -130,6 +148,8 @@ void rotl(stack_t **stack, unsigned int line_number);
 
 /*StackEdit2.c*/
 void rotr(stack_t **stack, unsigned int line_number);
+void push_end(stack_t **stack, unsigned int line_number);
+
 
 /* Calc0 */
 void add(stack_t **stack, unsigned int line_number);
@@ -140,9 +160,6 @@ void mod(stack_t **stack, unsigned int line_number);
 /*calc1 */
 
 
-/*opcode_handler.c*/
-int *instructionF(  stack_t **list);
-bool is_valid_integer(const char *str);
 
 /* Data-Structure.c */
 stack_t *creat_One ( int n);
